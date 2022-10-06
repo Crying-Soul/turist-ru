@@ -1,0 +1,25 @@
+{
+    "name": "turist-ru",
+    "version": "1.0.0",
+    "description": "Турист.ру – приложение о Санкт-Петербурге, делящееся актуальными мероприятиями, событиями дня, гибкими маршрутами, разнообразными экскурсиями и многим другим",
+    "main": "index.js",
+    "scripts": {
+        "server": "nodemon node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Crying-Soul/turist-ru.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Crying-Soul/turist-ru/issues"
+    },
+    "homepage": "https://github.com/Crying-Soul/turist-ru#readme",
+    "dependencies": {
+        "express": "^4.18.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
+}
