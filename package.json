@@ -17,7 +17,13 @@
     },
     "homepage": "https://github.com/Crying-Soul/turist-ru#readme",
     "dependencies": {
-        "express": "^4.18.1"
+        "body-parser": "^1.20.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.1",
+        "express-validator": "^6.14.2",
+        "jsonwebtoken": "^8.5.1",
+        "pg": "^8.8.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.20"
