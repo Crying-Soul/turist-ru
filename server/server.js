@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const os = require("os");
 const userRouter = require("../routes/user.routes");
-
+const mapRouter = require("../routes/map.routes");
 class Server {
     constructor() {
         this.PORT = process.env.PORT || 5000;
@@ -23,6 +23,7 @@ class Server {
         this.app.use(bodyParser.json());
         this.app.use(cors());
         this.app.use("/api", userRouter);
+        this.app.use("/api", mapRouter);
     }
 }
 
