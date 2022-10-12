@@ -9,10 +9,7 @@ class MapController {
         res.status(200).json(
             await Map.getCoordArr(data)
         );
-
     }
-
-
 }
 
 
