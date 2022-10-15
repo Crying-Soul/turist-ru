@@ -18,7 +18,7 @@ class Event {
         return data;
     }
 
-    async getEventOfTheDay(loc, lang = 'ru', date = new Date().toISOString().split('T')[0]) {
+    async getEventOfTheDay(loc = 'spb', lang = 'ru', date = new Date().toISOString().split('T')[0]) {
 
         const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events-of-the-day/?lang=${lang}&fields=&text_format=html&location=${loc}&date=${date}`)).results[0];
         const data = await this.getEventInfo(rawEvent.object.id, lang)
@@ -27,7 +27,7 @@ class Event {
         return data;
 
     }
-    async onlineSearch(q, loc, lang = 'ru', type = 'event') {
+    async onlineSearch(q, loc = 'spb', lang = 'ru', type = 'event') {
 
         const preData = await Request.get(`https://kudago.com/public-api/v1.4/search/?q=${q}&lang=${lang}&location=${loc}&ctype=${type}`)
         preData.results.push((await Request.get(preData.next)).results)
