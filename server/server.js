@@ -7,6 +7,7 @@ const cors = require("cors");
 const os = require("os");
 const userRouter = require("../routes/user.routes");
 const mapRouter = require("../routes/map.routes");
+const eventRouter = require("../routes/event.routes")
 class Server {
     constructor() {
         this.PORT = process.env.PORT || 5000;
@@ -24,6 +25,7 @@ class Server {
 
         this.app.use("/api", userRouter);
         this.app.use("/api", mapRouter);
+        this.app.use("/api", eventRouter);
 
         this.app.all("*", (req, res, next) => {
             // console.log(`Got ${req.method} request from ${req.headers['x-forwarded-for'] || req.socket.remoteAddress}`);

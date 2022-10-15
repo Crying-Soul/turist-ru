@@ -6,8 +6,6 @@ class Map {
 
     async getCoordArr(data) {
         return await Request.post('https://sightsafari.city/routecontroller/getpath2', data);
-
-
     }
 
 }

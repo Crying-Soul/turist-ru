@@ -27,8 +27,7 @@
         "express-validator": "^6.14.2",
         "jade": "^1.11.0",
         "jsonwebtoken": "^8.5.1",
-        "pg": "^8.8.0",
-        "stylus": "^0.59.0"
+        "pg": "^8.8.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.20"
