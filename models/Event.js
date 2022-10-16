@@ -20,6 +20,8 @@ class Event {
 
     async getEventOfTheDay(loc = 'spb', lang = 'ru', date = new Date().toISOString().split('T')[0]) {
 
+        console.log(loc, lang, date);
+
         const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events-of-the-day/?lang=${lang}&fields=&text_format=html&location=${loc}&date=${date}`)).results[0];
         const data = await this.getEventInfo(rawEvent.object.id, lang)
         data.place = await this.getPlaceInfo(data.event.place.id)
