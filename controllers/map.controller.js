@@ -33,10 +33,10 @@ class MapController {
     }
     async getLocByName(req, res) {
         try {
-            const { q } = req.query;
+            const { q, loc } = req.query;
             const validator = validationResult(req);
             if (validator.isEmpty()) {
-                res.status(200).json(await Map.getLocationByName(q))
+                res.status(200).json(await Map.getLocationByName(q, loc))
                 return
             }
             res.status(400).json({ error: validator.errors.shift() })
