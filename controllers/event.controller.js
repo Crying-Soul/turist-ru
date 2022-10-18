@@ -11,6 +11,7 @@ class EventController {
             res.status(200).json(
                 await Event.getEventOfTheDay(loc, lang, date)
             );
+            return
         } catch (error) {
 
             res.status(500).json([{ msg: "Something went wrong, try one more time" }, { dev_message: error.message }])
