@@ -10,24 +10,24 @@ router.post(
     "/auth/signup", [
         check("username")
         .exists()
-        .withMessage("nickname is required")
+        .withMessage("Логин не может быть пустым!")
         .isLength({ min: 3 })
-        .withMessage("wrong nickname length"),
+        .withMessage("Некоректная длина логина"),
 
         check("email")
         .exists()
-        .withMessage("email is required")
+        .withMessage("Емайл не может быть пустым!")
         .isEmail()
         .normalizeEmail({ gmail_remove_dots: true })
-        .withMessage("email is not valid"),
+        .withMessage("Некоректный Емейл!"),
 
         check("password")
         .exists()
-        .withMessage("password is required")
+        .withMessage("Пароль не может быть пустым")
         .isString().withMessage("password must be string")
         .trim()
         .isLength({ min: 6 })
-        .withMessage("password shoul be at least 6 symbols"),
+        .withMessage("Пароль должен содержать минимум 6 символов"),
     ],
     userController.createUser
 );
@@ -35,18 +35,18 @@ router.post(
     "/auth/login", [
         check("email")
         .exists()
-        .withMessage("email is required")
+        .withMessage("Емайл не может быть пустым!")
         .isEmail()
         .normalizeEmail({ gmail_remove_dots: true })
-        .withMessage("email is not valid"),
+        .withMessage("Некоректный Емейл!"),
 
         check("password")
         .exists()
-        .withMessage("password is required")
+        .withMessage("Пароль не может быть пустым")
         .isString().withMessage("password must be string")
         .trim()
         .isLength({ min: 6 })
-        .withMessage("password shoul be at least 6 symbols"),
+        .withMessage("Пароль должен содержать минимум 6 символов"),
     ],
     userController.loginUser
 );
