@@ -34,8 +34,8 @@ class Map {
         // console.log(self.CITIES);
         return (await Request.get(`https://sightsafari.city/geographycontroller/getgeocodersuggestions?desiredCoordinates=${this.CITIES[loc].join('%2C')}&query=${q}`)).body
     }
-    async getLocationByName(name) {
-        console.log(name);
+    async getLocationByName(name, loc) {
+
         return (await Request.get(`https://sightsafari.city/geographycontroller/getlocation?query=${name}&desiredCoordinates=${this.CITIES[loc].join(',')}`)).body;
     }
 
