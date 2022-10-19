@@ -7,10 +7,11 @@ class EventController {
         try {
             const { loc, lang, date } = req.query;
             console.log(loc, lang, date);
-
+const event = await Event.getEventOfTheDay(loc, lang, date)
+		if (!event){ res.sendStatus(204); return}
             res.status(200).json(
-                await Event.getEventOfTheDay(loc, lang, date)
-            );
+                event
+            )
             return
         } catch (error) {
 
