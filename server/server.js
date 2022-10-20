@@ -8,6 +8,7 @@ const os = require("os");
 const userRouter = require("../routes/user.routes");
 const mapRouter = require("../routes/map.routes");
 const eventRouter = require("../routes/event.routes")
+const compression = require('compression');
 class Server {
     constructor() {
         this.PORT = process.env.PORT || 5000;
@@ -20,6 +21,7 @@ class Server {
         this.app.listen(this.PORT, () => {
             console.log(`App listening at ${this.localIp}:${this.PORT}`);
         });
+        this.app.use(compression())
         this.app.use(bodyParser.json());
         this.app.use(cors());
 

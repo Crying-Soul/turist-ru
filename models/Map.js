@@ -28,7 +28,7 @@ class Map {
 
     async getCoordArr(data) {
 
-        return (await Request.post('https://sightsafari.city/routecontroller/getpath2', { desiredCoordinates: data.loc, apiKey: "", debug: false, ...data })).body;
+        return (await Request.post('https://sightsafari.city/routecontroller/getpath2', { desiredCoordinates: this.CITIES[data.loc].join(','), apiKey: "", debug: false,locale: "ru",  ...data })).body;
     }
     async getSuggestions(q, loc) {
         // console.log(self.CITIES);
@@ -38,6 +38,10 @@ class Map {
 
         return (await Request.get(`https://sightsafari.city/geographycontroller/getlocation?query=${name}&desiredCoordinates=${this.CITIES[loc].join(',')}`)).body;
     }
+    async getCircleRoute(data){
+        
+        return (await Request.post('https://sightsafari.city/routecontroller/getcircularpath2', {desiredCoordinates: this.CITIES[data.loc].join(','),apiKey: "", debug: false, locale: "ru", ...data})).body;
+     }
 
 }
 

@@ -6,6 +6,7 @@ const router = Router();
 
 
 router.post("/map/route", mapController.getRoad);
+router.post("/map/route/circle", mapController.getCircleRoad)
 router.get("/map/suggest", [
     query('q').exists().withMessage('query is required'),
     query('loc').exists().withMessage('location is required')

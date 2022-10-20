@@ -14,6 +14,17 @@ class MapController {
 
 
     }
+    async getCircleRoad(req, res) {
+        try {
+            const data = req.body;
+            res.status(200).json(await Map.getCircleRoute(data));
+        } catch (error) {
+            
+            res.status(500).json([{ msg: "Something went wrong, try one more time" }, { dev_message: error.message }])
+        }
+
+
+    }
     async getSuggest(req, res) {
         try {
             const { q, loc } = req.query;
