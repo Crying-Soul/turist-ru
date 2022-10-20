@@ -10,7 +10,8 @@ class WikiController{
 
             if (validator.isEmpty()) {
                
-                res.status(200).json(await Wiki.getInfo(query));
+               // res.status(200).json(await Wiki.getInfo(query));
+		    res.sendStatus(204)
                 return;
             }
 
