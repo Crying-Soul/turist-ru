@@ -5,8 +5,7 @@ const wikiController = require("../controllers/wiki.controller");
 const router = Router();
 
 
-router.get("/wiki/get", 
-query('query').exists().withMessage('Query is required!'),
+router.get("/wiki/get",
 wikiController.getInfo);
 
 module.exports = router;
