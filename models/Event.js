@@ -24,7 +24,7 @@ class Event {
 
         const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events-of-the-day/?lang=${lang}&fields=&text_format=html&location=${loc}&date=${date}`)).results[0];
 	    
-	   //	 if(!rawEvent){return null}
+	 if(!rawEvent){return null}
 	    
         const data = await this.getEventInfo(rawEvent.object.id, lang)
         
