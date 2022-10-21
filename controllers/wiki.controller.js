@@ -3,6 +3,9 @@ const Wiki = require('../models/Wiki')
 
 class WikiController{
     async getInfo(req, res){
+	    res.sendStatus(200);
+	    return;
+	    
         try {
             const validator = validationResult(req);
 
