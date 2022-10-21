@@ -39,7 +39,11 @@ class Event {
     async onlineSearch(q, loc = 'spb', lang = 'ru', type = 'event') {
 
         const preData = await Request.get(`https://kudago.com/public-api/v1.4/search/?q=${q}&lang=${lang}&location=${loc}&ctype=${type}`)
-        preData.results.push((await Request.get(preData.next)).results)
+	    let _data = await Request.get(preData.
+next)).results;
+	_data.forEach(req => {
+		req.place = await this.getPlaceInfo(req.place.id)}
+        preData.results.push((_data);
         return preData.results;
     }
 
