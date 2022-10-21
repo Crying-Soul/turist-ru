@@ -1,4 +1,5 @@
 
+const { validationResult } = require('express-validator');
 const Wiki = require('../models/Wiki')
 
 class WikiController{
