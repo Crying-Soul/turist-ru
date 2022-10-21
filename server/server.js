@@ -10,6 +10,7 @@ const mapRouter = require("../routes/map.routes");
 const eventRouter = require("../routes/event.routes")
 const compression = require('compression');
 const wikiRouter = require("../routes/wiki.routes");
+
 class Server {
     constructor() {
         this.PORT = process.env.PORT || 5000;
