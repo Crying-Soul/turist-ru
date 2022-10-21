@@ -25,4 +25,4 @@ class WikiController{
     }
 }
 
-module.expoets = new WikiController();
+module.exports = new WikiController();
