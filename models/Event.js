@@ -42,8 +42,8 @@ class Event {
 	    let _data = await Request.get(preData.
 next)).results;
 	_data.forEach(req => {
-		req.place = await this.getPlaceInfo(req.place.id)}
-        preData.results.push((_data);
+		req.place = await this.getPlaceInfo(req.place.id)})
+        preData.results.push(_data);
         return preData.results;
     }
 
