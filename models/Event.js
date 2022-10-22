@@ -20,17 +20,12 @@ class Event {
     }
 
     async getEventOfTheDay(loc = 'spb', lang = 'ru', date = new Date().toISOString().split('T')[0]) {
-<<<<<<< HEAD
-        const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=${loc}&actual_since=1444385206&actual_until=1444385405&is_free=&lon=&lat=&radius=`)).results[1];
-=======
         const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=${loc}`)).results[0];
->>>>>>> some
 
         
         
         const data = await this.getEventInfo(rawEvent.id, lang)
         
-<<<<<<< HEAD
         
 	
 	    if (!data.event.place) return data;
@@ -43,20 +38,12 @@ class Event {
 	 if(!rawEvent){return null}
 	    
         const data = await this.getEventInfo(rawEvent.object.id, lang)
-=======
->>>>>>> some
         
 	
 	    if (!data.event.place) return data;
 	    console.log(data);
-<<<<<<< HEAD
 	    data.place = await this.getPlaceInfo(data.event.place.id)
         delete data.event.place;*/
-=======
-	    data.place = (await this.getPlaceInfo(data.event.place.id)).coords
-        delete data.event.place
-
->>>>>>> some
         return data;
 
     }
@@ -69,23 +56,12 @@ class Event {
 	// preData.results.forEach(async req => {
     //     if (req.place) {
     //         req.place = await this.getPlaceInfo(req.place.id)}
-<<<<<<< HEAD
-=======
-    
->>>>>>> some
     //     })
     // console.log(preData);
 
     for (let i = 0; i < preData.results.length; i++) {
         const area = preData.results[i];
-<<<<<<< HEAD
         area.place.coords = (await this.getPlaceInfo(area.place.id)).coords
-=======
-        if (area.place) {
-            area.place.coords = (await this.getPlaceInfo(area.place.id)).coords
-        }
-        
->>>>>>> some
         
     }
     
