@@ -1,3 +1,4 @@
+const timespan = require('jsonwebtoken/lib/timespan');
 const Request = require('./Request');
 
 class Event {
@@ -19,9 +20,19 @@ class Event {
     }
 
     async getEventOfTheDay(loc = 'spb', lang = 'ru', date = new Date().toISOString().split('T')[0]) {
+        const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=${loc}&actual_since=1444385206&actual_until=1444385405&is_free=&lon=&lat=&radius=`)).results[0];
 
         
-
+        
+        const data = await this.getEventInfo(rawEvent.id, lang)
+        
+        
+	
+	    if (!data.event.place) return data;
+	    console.log(data);
+	    data.place = (await this.getPlaceInfo(data.event.place.id)).coords
+        delete data.event.place
+/*
         const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events-of-the-day/?lang=${lang}&fields=&text_format=html&location=${loc}&date=${date}`)).results[0];
 	    
 	 if(!rawEvent){return null}
@@ -32,22 +43,45 @@ class Event {
 	    if (!data.event.place) return data;
 	    console.log(data);
 	    data.place = await this.getPlaceInfo(data.event.place.id)
-        delete data.event.place;
+        delete data.event.place;*/
         return data;
 
     }
     async onlineSearch(q, loc = 'spb', lang = 'ru', type = 'event') {
 
         const preData = await Request.get(`https://kudago.com/public-api/v1.4/search/?q=${q}&lang=${lang}&location=${loc}&ctype=${type}`)
-	    /*
-	    let _data = (await Request.get(preData.
-next)).results;
-	    console.log(_data);
-	_data.forEach(async req => {
-		req.place = await this.getPlaceInfo(req.place.id)})*/
-        preData.results.push((await Request.get(preData.     next)).results)
+	
+	  //  let next_page = (await Request.get(preData.next)).results;
+	    
+	// preData.results.forEach(async req => {
+    //     if (req.place) {
+    //         req.place = await this.getPlaceInfo(req.place.id)}
+    //     })
+    // console.log(preData);
+
+    for (let i = 0; i < preData.results.length; i++) {
+        const area = preData.results[i];
+        area.place.coords = (await this.getPlaceInfo(area.place.id)).coords
+        
+    }
+    
+    // preData.results.map(async area => {
+    //     area.place.coords = await Request.get(`https://kudago.com/public-api/v1.4/places/${area.place.id}/?lang=ru}`)
+    //     return area;
+    // })
+
+
+    //  preData.results.forEach(async obj => {
+    //     console.log(await this.getPlaceInfo(obj.place.id) )
+        
+    // })
+  
+        
+		
+        // preData.results.push((await Request.get(preData.     next)).results)
         return preData.results;
     }
+
 
 }
 
