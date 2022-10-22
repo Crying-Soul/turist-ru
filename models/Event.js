@@ -45,6 +45,7 @@ class Event {
 	// preData.results.forEach(async req => {
     //     if (req.place) {
     //         req.place = await this.getPlaceInfo(req.place.id)}
+    
     //     })
     // console.log(preData);
 
