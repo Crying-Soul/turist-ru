@@ -41,6 +41,7 @@ class Event {
         const preData = await Request.get(`https://kudago.com/public-api/v1.4/search/?q=${q}&lang=${lang}&location=${loc}&ctype=${type}`)
 	    let _data = (await Request.get(preData.
 next)).results;
+	    console.log(_data);
 	_data.forEach(async req => {
 		req.place = await this.getPlaceInfo(req.place.id)})
         preData.results.push(_data);
