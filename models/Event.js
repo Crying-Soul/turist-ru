@@ -20,7 +20,7 @@ class Event {
     }
 
     async getEventOfTheDay(loc = 'spb', lang = 'ru', date = new Date().toISOString().split('T')[0]) {
-        const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=${loc}&actual_since=1444385206&actual_until=1444385405&is_free=&lon=&lat=&radius=`)).results[0];
+        const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=${loc}&actual_since=1444385206&actual_until=1444385405&is_free=&lon=&lat=&radius=`)).results[1];
 
         
         
