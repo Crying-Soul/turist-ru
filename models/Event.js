@@ -32,18 +32,7 @@ class Event {
 	    console.log(data);
 	    data.place = (await this.getPlaceInfo(data.event.place.id)).coords
         delete data.event.place
-/*
-        const rawEvent = (await Request.get(`https://kudago.com/public-api/v1.4/events-of-the-day/?lang=${lang}&fields=&text_format=html&location=${loc}&date=${date}`)).results[0];
-	    
-	 if(!rawEvent){return null}
-	    
-        const data = await this.getEventInfo(rawEvent.object.id, lang)
-        
-	
-	    if (!data.event.place) return data;
-	    console.log(data);
-	    data.place = await this.getPlaceInfo(data.event.place.id)
-        delete data.event.place;*/
+
         return data;
 
     }
