@@ -46,14 +46,12 @@ class EventController {
                     await Event.getEventInfo(id, lang)
                 );
                 return;
-
             }
             res.status(400).json({ error: validator.errors.shift() })
 
         } catch (error) {
             res.status(500).json([{ msg: "Something went wrong, try one more time" }, { dev_message: error.message }])
         }
-
     }
     async getPlace(req, res) {
         try {

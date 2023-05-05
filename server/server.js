@@ -13,7 +13,7 @@ const wikiRouter = require("../routes/wiki.routes");
 
 class Server {
     constructor() {
-        this.PORT = process.env.PORT || 5000;
+        this.PORT = process.env.PORT || 8080;
         this.ROOT = path.dirname(require.main.filename);
         this.app = express();
         this.localIp = Object.values(os.networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat((i.family === "IPv4" && !i.internal && i.address) || []), [])), [])[0];
